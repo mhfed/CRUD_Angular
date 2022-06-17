@@ -1,0 +1,94 @@
+<div class="mt-4 mx-auto w-50">
+  <h1 class="h2">Form Add Product</h1>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="form-group py-2">
+      <label for="name">Product name</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control mt-2"
+        id="name"
+      />
+      <div *ngFor="let validation of validation_messages.name">
+        <span
+          class="text-danger"
+          *ngIf="
+            myForm.controls['name'].errors &&
+            myForm.controls['name'].errors[validation.type] &&
+            (myForm.controls['name'].dirty || myForm.controls['name'].touched)
+          "
+        >
+          {{ validation.message }}
+        </span>
+      </div>
+    </div>
+    <div class="form-group py-2">
+      <label for="image">Product image</label>
+      <input
+        formControlName="image"
+        type="text"
+        class="form-control mt-2"
+        id="image"
+      />
+      <div *ngFor="let validation of validation_messages.name">
+        <span
+          class="text-danger"
+          *ngIf="
+            myForm.controls['image'].errors &&
+            myForm.controls['image'].errors[validation.type] &&
+            (myForm.controls['image'].dirty || myForm.controls['image'].touched)
+          "
+        >
+          {{ validation.message }}
+        </span>
+      </div>
+    </div>
+    <div class="form-group py-2">
+      <label for="price">Product price</label>
+      <input
+        type="number"
+        formControlName="price"
+        class="form-control mt-2"
+        id="price"
+      />
+      <div *ngFor="let validation of validation_messages.name">
+        <span
+          class="text-danger"
+          *ngIf="
+            myForm.controls['price'].errors &&
+            myForm.controls['price'].errors[validation.type] &&
+            (myForm.controls['price'].dirty || myForm.controls['price'].touched)
+          "
+        >
+          {{ validation.message }}
+        </span>
+      </div>
+    </div>
+    <div class="form-group py-2">
+      <label for="desc">Description</label>
+      <textarea
+        class="form-control mt-2"
+        id="desc"
+        rows="3"
+        formControlName="desc"
+      ></textarea>
+      <div *ngFor="let validation of validation_messages.name">
+        <span
+          class="text-danger"
+          *ngIf="
+            myForm.controls['desc'].errors &&
+            myForm.controls['desc'].errors[validation.type] &&
+            (myForm.controls['desc'].dirty || myForm.controls['desc'].touched)
+          "
+        >
+          {{ validation.message }}
+        </span>
+      </div>
+    </div>
+    <div class="form-group py-2 text-center">
+      <button class="btn btn-primary" [disabled]="!myForm.valid">
+        Add Product
+      </button>
+    </div>
+  </form>
+</div>
